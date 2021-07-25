@@ -30,5 +30,19 @@ public class UsersRestService {
 	public Optional<User> getUser(@PathVariable Long id) {
 		return userRepository.findById(id);
 	}
+	@RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
+	public Optional<User> getUser(@PathVariable Long id) {
+		return userRepository.findById(id);
+	}
+	@RequestMapping(value = "/users", method = RequestMethod.POST)
+	public User save(@RequestBody User user) {
+		return userRepository.save(user);
+	}
+	@RequestMapping(value = "/user/{id}", method =RequestMethod.DELETE)
+	public boolean deleteUser(@PathVariable Long id) {
+		userRepository.deleteById(id);
+		return true;
+		 
+	}
 
 }
